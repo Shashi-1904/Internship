@@ -1,5 +1,15 @@
 import React from "react"
+import AddRoom from "./components/room/AddRoom"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "/node_modules/bootstrap/dist/js/bootstrap.min.js"
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+import Header from "./components/common/Header"
+import HotelService from "./components/common/HotelService.jsx";
+import RoomSearch from "./components/common/RoomSearch.jsx";
+import RoomSearchResult from "./components/common/RoomSearchResult.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
+/*import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "/node_modules/bootstrap/dist/js/bootstrap.min.js"
 import ExistingRooms from "./components/room/ExistingRooms"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
@@ -17,12 +27,21 @@ import FindBooking from "./components/booking/FindBooking"
 import Login from "./components/auth/Login"
 import Registration from "./components/auth/Registration"
 import Profile from "./components/auth/Profile"
-import { AuthProvider } from "./components/auth/AuthProvider"
-import RequireAuth from "./components/auth/RequireAuth"
+import AuthProvider from "./components/auth/AuthProvider";
+
+import RequireAuth from "./components/auth/RequireAuth"*/
 
 function App() {
 	return (
-		<AuthProvider>
+		<div>
+			<Header />
+			<HotelService />
+			<RoomSearch/>
+			<RoomSearchResult/>
+	    </div>
+	  
+		//<AddRoom></AddRoom>
+		/*<AuthProvider>
 			<main>
 				<Router>
 					<NavBar />
@@ -56,7 +75,7 @@ function App() {
 				</Router>
 				<Footer />
 			</main>
-		</AuthProvider>
+		</AuthProvider>*/
 	)
 }
 

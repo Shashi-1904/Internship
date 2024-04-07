@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function HomePage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const background = document.querySelector('.parallax-background');
+      if (background) {
+        background.style.backgroundPositionY = `${-scrollPosition * 0.5}px`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div style={{ position: 'relative', height: '75vh', overflow: 'hidden' }}>
-      <img
-        src="src/assets/images/services-1.jpg"
-        alt="Background"
+      <div
+        className="parallax-background"
         style={{
           position: 'absolute',
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          background: 'url(src/assets/images/services-1.jpg) center/cover no-repeat',
         }}
       />
       <div
@@ -18,7 +33,7 @@ export default function HomePage() {
           position: 'absolute',
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
         }}
       ></div>
       <div
@@ -29,11 +44,13 @@ export default function HomePage() {
           transform: 'translate(-50%, -50%)',
           textAlign: 'center',
           color: 'white',
-          zIndex: 1, 
+          zIndex: 1,
         }}
       >
-        <h1 style={{ fontSize: '3rem' }}>Welcome to <span style={{ color:'#FF007F' }}>Daman Hotel</span></h1>
-        <p style={{ fontSize: '1.5rem' }}>Experiance the best Hospitability in Town</p>
+        <h1 style={{ fontSize: '3rem' }}>
+          Welcome to <span style={{ color: '#FF007F' }}>Daman Hotel</span>
+        </h1>
+        <p style={{ fontSize: '1.5rem' }}>Experience the best Hospitality in Town</p>
       </div>
     </div>
   );

@@ -7,6 +7,15 @@ import Header from "./components/common/Header"
 import HotelService from "./components/common/HotelService.jsx";
 import RoomSearch from "./components/common/RoomSearch.jsx";
 import RoomSearchResult from "./components/common/RoomSearchResult.jsx";
+import RoomListing from "./components/room/RoomListing.jsx";
+import BookingForm from "./components/booking/BookingForm.jsx"
+import Login from "./components/auth/Login"
+import RegistrationForm from "./components/auth/Registration.jsx";
+import FindMyBookings from "./components/booking/Bookings.jsx";
+import Footer from "./components/layout/Footer";
+import Logout from "./components/auth/Logout.jsx";
+import HelpPage from "./components/auth/help.jsx";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 /*import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -33,12 +42,29 @@ import RequireAuth from "./components/auth/RequireAuth"*/
 
 function App() {
 	return (
-		<div>
-			<Header />
-			<HotelService />
-			<RoomSearch/>
-			<RoomSearchResult/>
-	    </div>
+		<Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<div>
+                                    <HotelService />
+                                    <RoomSearch/>
+                                    <RoomSearchResult/>
+                                  </div>} />
+        <Route path="/browse-all-rooms" element={<RoomListing />} />
+		<Route path="/reserve-room" element={<BookingForm/>} />
+		<Route path="/login" element={<Login/>} />
+		<Route path="/register" element={<RegistrationForm/>} />
+		<Route path="/bookings" element={<FindMyBookings/>} />
+		<Route path="/logout" element={<Logout/>} />
+		<Route path="/help" element={<HelpPage/>} />
+
+
+
+
+      </Routes>
+	  <Footer />
+    </Router>
+	
 	  
 		//<AddRoom></AddRoom>
 		/*<AuthProvider>
